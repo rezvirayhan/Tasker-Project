@@ -9,8 +9,10 @@ function App() {
   return (
     <>
       <Header></Header>
-      <HeroSection></HeroSection>
-      <TaskBoard></TaskBoard>
+      <div className='flex flex-col justify-center items-center'>
+        <HeroSection></HeroSection>
+        <TaskBoard></TaskBoard>
+      </div>
       <Footer></Footer>
     </>
   )
