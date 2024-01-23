@@ -16,8 +16,9 @@ const TaskBoard = () => {
     }
     const [task, setTask] = useState([defaultTask])
     const [showAddModal, setShowAddModal] = useState(false)
-    function handleAddTask(modalTask) {
-        console.log('adding a task', modalTask);
+    function handleAddTask(e, task) {
+        e.preventDefault()
+        console.log('adding a task', task);
     }
     return (
         <section className="mb-20" id="tasks">

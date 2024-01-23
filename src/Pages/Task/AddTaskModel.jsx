@@ -90,9 +90,9 @@ const AddTaskModel = ({ onSave }) => {
                 </div>
                 <div className="mt-16 flex justify-center lg:mt-20">
                     <button
-                        type="submit"
+
                         className="rounded bg-blue-600 px-4 py-2 text-white transition-all hover:opacity-80"
-                        onClick={() => onSave(modalTask)}
+                        onClick={(e) => onSave(e,modalTask)}
                     >
                         Save
                     </button>
