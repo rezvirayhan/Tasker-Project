@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-const AddTaskModel = ({ onSave }) => {
-    const [modalTask, setModalTask] = useState({
+const AddTaskModel = ({ onSave, taskToupdte }) => {
+    const [modalTask, setModalTask] = useState(taskToupdte || {
         id: crypto.randomUUID(),
         title: "",
         description: "",
@@ -9,6 +9,8 @@ const AddTaskModel = ({ onSave }) => {
         priority: "",
         isFavorite: false
     })
+
+    const [isAdd, setIsAdd] = useState(Object.is(taskToupdte, null))
     const handleChange = (evt) => {
         const name = evt.target.name;
         let value = evt.target.value;
@@ -29,7 +31,7 @@ const AddTaskModel = ({ onSave }) => {
                 <h2
                     className="mb-9 text-center text-2xl font-bold text-white lg:mb-11 lg:text-[28px]"
                 >
-                    Add New Task
+                    {isAdd ? " Add New Task" : "Edit Task"}
                 </h2>
                 <div className="space-y-9 text-white lg:space-y-10">
                     <div className="space-y-2 lg:space-y-3">
@@ -93,7 +95,7 @@ const AddTaskModel = ({ onSave }) => {
                     <button
 
                         className="rounded bg-blue-600 px-4 py-2 text-white transition-all hover:opacity-80"
-                        onClick={(e) => onSave(e, modalTask)}
+                        onClick={(e) => onSave(e, modalTask, isAdd)}
                     >
                         Save
                     </button>

@@ -15,22 +15,42 @@ const TaskBoard = () => {
     }
     const [task, setTask] = useState([defaultTask])
     const [showAddModal, setShowAddModal] = useState(false)
-    function handleAddTask(e, newTask) {
+    const [taskToupdte, setTaskToupdte] = useState(null)
+    function handleAddTask(e, newTask, isAdd) {
         e.preventDefault()
-        console.log('Adding The Task', newTask);
-        setTask([...task, newTask])
+        if (isAdd) {
+            setTask([...task, newTask])
+        }
+        else {
+            setTask(
+                task.map(task => {
+                    if (task.id === newTask.id) {
+                        return newTask
+                    }
+                    return task
+                })
+            )
+        }
         setShowAddModal(false)
+    }
+    function handleEditTask(task) {
+        setTaskToupdte(task)
+        setShowAddModal(true)
     }
     return (
         <section className="mb-20" id="tasks">
-            {showAddModal && <AddTaskModel onSave={handleAddTask} />}
+            {showAddModal && <AddTaskModel
+                onSave={handleAddTask}
+                taskToupdte={taskToupdte}
+
+            />}
             <div className="container">
                 <div className="p-2 flex justify-end">
                     <SearchTask></SearchTask>
                 </div>
                 <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
                     <TaskAction onAddClick={() => setShowAddModal(true)}></TaskAction>
-                    <TaskList task={task}></TaskList>
+                    <TaskList task={task} onEdit={handleEditTask}></TaskList>
                 </div>
             </div>
         </section>
