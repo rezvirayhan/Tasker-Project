@@ -45,6 +45,12 @@ const TaskBoard = () => {
         const taskAfterDeleted = task.filter(task => task.id !== taskId)
         setTask(taskAfterDeleted)
     }
+    function handleDeletedAllClick() {
+        task.length = 0
+        setTask([
+            ...task
+        ])
+    }
     return (
         <section className="mb-20" id="tasks">
             {showAddModal && <AddTaskModel
@@ -57,7 +63,7 @@ const TaskBoard = () => {
                     <SearchTask></SearchTask>
                 </div>
                 <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
-                    <TaskAction onAddClick={() => setShowAddModal(true)}></TaskAction>
+                    <TaskAction onDeletedOnClick={handleDeletedAllClick} onAddClick={() => setShowAddModal(true)}></TaskAction>
                     <TaskList OnDeleted={handleDeletedTask} task={task} onEdit={handleEditTask}></TaskList>
                 </div>
             </div>
