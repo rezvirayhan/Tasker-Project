@@ -7,7 +7,6 @@ const TaskList = ({ task, onEdit, OnDeleted }) => {
                 <thead>
                     <tr>
                         <th className="p-4 pb-8 text-sm font-semibold capitalize w-[48px]"></th>
-
                         <th className="p-4 pb-8 text-sm font-semibold capitalize w-[300px]"> Title </th>
                         <th className="p-4 pb-8 text-sm font-semibold capitalize w-full"> Description </th>
                         <th className="p-4 pb-8 text-sm font-semibold capitalize md:w-[350px]"> Tags </th>
@@ -21,7 +20,9 @@ const TaskList = ({ task, onEdit, OnDeleted }) => {
                         task.map(task =>
                             <tr key={task.id} className="border-b border-[#2E3443] [&>td]:align-baseline [&>td]:px-4 [&>td]:py-2">
                                 <td>
-                                    {task.isFavorite ? <FaStar color="yellow" /> : <FaStar color="gray" />}
+                                    <button>
+                                        {task.isFavorite ? <FaStar color="yellow" /> : <FaStar color="gray" />}
+                                    </button>
                                 </td>
                                 <td>{task.title}</td>
                                 <td>

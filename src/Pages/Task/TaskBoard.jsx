@@ -51,6 +51,7 @@ const TaskBoard = () => {
             ...task
         ])
     }
+
     return (
         <section className="mb-20" id="tasks">
             {showAddModal && <AddTaskModel
