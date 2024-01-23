@@ -10,15 +10,16 @@ const TaskBoard = () => {
         'id': crypto.randomUUID(),
         'title': 'Learn React By RWS',
         'description': 'লার্ন উইথ সুমিত একটি বাংলা প্রোগ্রামিং প্লাটফর্ম যেখানে প্রোগ্রামিং শুধু শেখানো নয়, বুঝানো হয়.',
-        'tags': ["web", "react", 'next'],
-        'priority': "High",
+        'tags': ["Web", "React", 'Redux'],
         'isFavorite': true
     }
     const [task, setTask] = useState([defaultTask])
     const [showAddModal, setShowAddModal] = useState(false)
-    function handleAddTask(e, task) {
+    function handleAddTask(e, newTask) {
         e.preventDefault()
-        console.log('adding a task', task);
+        console.log('Adding The Task', newTask);
+        setTask([...task, newTask])
+        setShowAddModal(false)
     }
     return (
         <section className="mb-20" id="tasks">

@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const AddTaskModel = ({ onSave }) => {
     const [modalTask, setModalTask] = useState({
+        id: crypto.randomUUID(),
         title: "",
         description: "",
         tags: [],
@@ -81,9 +82,9 @@ const AddTaskModel = ({ onSave }) => {
                                 required
                             >
                                 <option value="">Select Priority</option>
-                                <option value="low">Low</option>
-                                <option value="medium">Medium</option>
-                                <option value="high">High</option>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
                             </select>
                         </div>
                     </div>
@@ -92,7 +93,7 @@ const AddTaskModel = ({ onSave }) => {
                     <button
 
                         className="rounded bg-blue-600 px-4 py-2 text-white transition-all hover:opacity-80"
-                        onClick={(e) => onSave(e,modalTask)}
+                        onClick={(e) => onSave(e, modalTask)}
                     >
                         Save
                     </button>
